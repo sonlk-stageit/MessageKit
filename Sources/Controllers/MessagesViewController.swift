@@ -352,7 +352,9 @@ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
 
     open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         guard let messagesFlowLayout = collectionViewLayout as? MessagesCollectionViewFlowLayout else { return .zero }
-        return messagesFlowLayout.sizeForItem(at: indexPath)
+        var size = messagesFlowLayout.sizeForItem(at: indexPath)
+        size.width = UIScreen.main.bounds.size.width
+        return size
     }
 
     open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
